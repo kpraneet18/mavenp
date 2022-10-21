@@ -1,0 +1,31 @@
+@Library("myLib")_
+pipeline
+{
+    agent any
+    stages
+    {
+        stage('ContDownload')
+        {
+            steps
+            {
+                script
+                {
+                    cicd.newGit("https://github.com/kpraneet18/maven.git")
+                }
+            }
+        }
+        
+        stage('contBuild')
+        {
+            steps
+            {
+                script
+                {
+                    cicd.newMaven()
+                }
+            }
+        }
+        
+        
+    }
+}
